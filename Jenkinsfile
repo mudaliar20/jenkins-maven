@@ -12,19 +12,15 @@ pipeline {
                 sh "mvn test site"
             }
             
-             post {
-                always {
-                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'   
-                    archiveArtifacts "target/surefire-reports/TEST-com.mycompany.app.AppTest.xml"
-                }
-            }     
+                 
         }
-
+/*
         stage('deploy') { 
             steps {
                 sh "mvn package"
             }
         }
+        
 
 
         stage('Build Docker image'){
@@ -59,6 +55,15 @@ pipeline {
             steps {
                  archiveArtifacts '**/target/*.jar'
             }
-        }
+        }*/
+        
+       
     }
+	
+	 post {
+                always {
+                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'   
+                    archiveArtifacts "target/surefire-reports/*.xml"
+                }
+            } 
 }
