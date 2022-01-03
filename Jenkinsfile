@@ -15,6 +15,7 @@ pipeline {
              post {
                 always {
                     junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'   
+                    archiveArtifacts "target/surefire-reports/TEST-com.mycompany.app.AppTest.xml"
                 }
             }     
         }
